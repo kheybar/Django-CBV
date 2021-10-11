@@ -3,10 +3,10 @@
 {% block content %}
 
 <h1>Home</h1>
-
+<br>
 {% for todo in todos %}
     <a href="{% url 'first:detail_todo' todo.id todo.slug%}">
-        {{ todo.title }}
+        {{ todo.title }} <br> <br>
     </a>
 {% endfor %}
 
