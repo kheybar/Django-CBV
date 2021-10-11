@@ -4,6 +4,10 @@
 
 <h1>Home</h1>
 
-<h2>{{ name }}</h2>
+{% for todo in todos %}
+    <a href="{% url 'first:detail_todo' todo.id todo.slug%}">
+        {{ todo.title }}
+    </a>
+{% endfor %}
 
 {% endblock %}
