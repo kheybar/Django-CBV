@@ -3,11 +3,18 @@
 {% block content %}
 
 <h1>Home</h1>
+<br>
 
 {% for todo in todos %}
     <a href="{% url 'first:detail_todo' todo.id todo.slug%}">
-        {{ todo.title }}
+        {{ todo.title }} 
     </a>
+    <a href="{% url 'first:delete_todo' todo.id %}" class="btn btn-danger">Delete</a>
+    <a href="{% url 'first:update_todo' todo.id %}" class="btn btn-warning">Update</a>
+    <br>
+    <hr>
+    <br>
+    
 {% endfor %}
 
 {% endblock %}
