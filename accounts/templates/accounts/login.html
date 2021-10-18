@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %} 
+    {% if form.error %}
+        <p>you have an error</p>
+    {% endif %}
+
+    {% if next %} 
+        {% if request.user.is_authenticated %}
+            <p>
+                you login now!!!
+            </p>
+        {% endif %}
+        
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-primary" value="Login">
+    </form>
+{% endblock %}

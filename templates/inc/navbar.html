@@ -1,6 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="navbar-nav">
-          <a class="nav-link" href="{% url 'first:home' %}">Home</a>
-          <a class="nav-link" href="{% url 'first:create_todo' %}">Create Todo</a>
+            <a class="nav-link" href="{% url 'first:home' %}">Home</a>
+            <a class="nav-link" href="{% url 'first:create_todo' %}">Create Todo</a>
+        {% if request.user.is_authenticated %}
+            <a class="nav-link" href="/">Logout</a>
+        {% else %}
+            <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+        {% endif %}        
     </div>
 </nav>
