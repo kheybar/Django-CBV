@@ -134,10 +134,10 @@ LOGIN_REDIRECT_URL = 'first:home'
 
 
 # Email Settings
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'mahdizarepour15@gmail.com'
-EMAIL_HOST_PASSWPORD = 'rfcxlrwpsyrfojsy'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'Mahdi Application <mahdizarepour15@gmail.com>'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_HOST_USER = 'mahdizarepour15@gmail.com'
+# EMAIL_HOST_PASSWPORD = ''
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# DEFAULT_FROM_EMAIL = 'Mahdi Application <mahdizarepour15@gmail.com>'

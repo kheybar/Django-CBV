@@ -15,4 +15,20 @@ class LogoutUser(auth_views.LogoutView):
 class UserPassReset(auth_views.PasswordResetView):
     template_name = 'accounts/password_reset_form.html' # صفحه ای که کاربر قراره بیاد و ایمیلشو وارد کنه
     success_url = reverse_lazy('accounts:password_reset_done')
-    html_email_template_name = 'accounts/password_reset_email.html' # متنی که قراره به کاربر ایمیل بشه
+    email_template_name = 'accounts/password_reset_email.html' # متنی که قراره به کاربر ایمیل بشه
+
+
+
+class PasswordResetDoneView(auth_views.PasswordResetDoneView):
+    template_name = 'accounts/password_reset_done.html'
+
+
+
+class PasswordResetConfirmViewView(auth_views.PasswordResetConfirmViewView):
+    template_name = 'accounts/password_reset_confirm.html'
+    success_url = reverse_lazy('accounts:password_reset_complete')
+
+
+
+class PasswordResetCompleteView(auth_views.PasswordResetCompleteView):
+    template_name = 'accounts/password_reset_complete.html'
