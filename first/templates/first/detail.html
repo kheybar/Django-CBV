@@ -7,4 +7,28 @@
     <small>
         {{ todo.created }}
     </small>
+    <br>
+    <br>
+    <hr>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-primary" value="send">
+    </form>
+    <br>
+    <br>
+    <h4>
+        comments
+    </h4>
+    {% for cmt in todo.comments.all %}
+        <hr>
+        <p>
+            name: {{ cmt.name }}
+        </p>
+        <p>
+            comment: {{ cmt.body }}
+        </p>
+        <br>
+    {% endfor %}
+
 {% endblock %}
