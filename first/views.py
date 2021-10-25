@@ -1,6 +1,7 @@
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from django.views.generic.dates import MonthArchiveView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.text import slugify
 from django.contrib import messages
 from .models import Todo
@@ -14,19 +15,19 @@ class Home(ListView):
 
 
 
-class DetailTodo(DetailView):
+class DetailTodo(LoginRequiredMixin, DetailView):
     template_name = 'first/detail.html'
-    model = Todo
+    # model = Todo
     context_object_name = 'todo'
-    slug_field = 'slug'
-    slug_url_kwarg = 'article_slug'
+    # slug_field = 'slug'
+    # slug_url_kwarg = 'article_slug'
 
     def get_queryset(self, **kwargs):
         return Todo.objects.filter(id=self.kwargs['pk'], slug__iexact=self.kwargs['article_slug'])
 
 
 
-class CreateTodo(CreateView):
+class CreateTodo(LoginRequiredMixin, CreateView):
     model = Todo
     fields = ('title',)
     template_name = 'first/create.html'
@@ -41,13 +42,13 @@ class CreateTodo(CreateView):
 
 
 
-class DeleteTodo(DeleteView):
+class DeleteTodo(LoginRequiredMixin, DeleteView):
     model = Todo
     template_name = 'first/delete.html'
     success_url = reverse_lazy('first:home')
 
 
-class UpdateTodo(UpdateView):
+class UpdateTodo(LoginRequiredMixin, UpdateView):
     model = Todo
     fields = ('title',)
     template_name = 'first/update.html'
