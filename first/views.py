@@ -1,5 +1,6 @@
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
+from django.views.generic.dates import MonthArchiveView
 from django.utils.text import slugify
 from django.contrib import messages
 from .models import Todo
@@ -59,3 +60,11 @@ class UpdateTodo(UpdateView):
         messages.success(self.request, 'your todo update successfully.', extra_tags='success')
         return super().form_valid(form)
 
+
+
+class MonthTodo(MonthArchiveView):
+    model = Todo
+    date_field = 'published'
+    month_format = '%m'
+    template_name = 'first/todo_month.html'
+    context_object_name = 'todos'
